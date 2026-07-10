@@ -14,9 +14,26 @@ return {
   },
 
   { "shaunsingh/nord.nvim", name = "nord", priority = 1000 },
+  {
+    "neanias/everforest-nvim",
+    version = false,
+    lazy = false,
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require("everforest").setup({
+      -- Your config here
+      background = "hard",
+      transparent_background_level = 2,
+      on_highlights = function(hl, palette)
+        hl.Visual = { bg = "#4a3a5a" }
+      end,
+      })
+    end,
+  },
 
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     lazy = false,
     build = ':TSUpdate',
   },
@@ -82,13 +99,7 @@ return {
       -- - etc
     },
     init = function()
-      vim.g.coq_settings = {
-          auto_start = true, -- if you want to start COQ at startup
-          -- Your COQ settings here
-          keymap = {
-            jump_to_mark = "c-;",
-          },
-      }
+      vim.g.coq_settings = {}
     end,
     config = function()
       -- Your LSP settings here

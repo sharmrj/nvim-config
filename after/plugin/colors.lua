@@ -1,5 +1,5 @@
 function Color()
-    color = "nord"
+    color = "everforest"
 
     vim.cmd.colorscheme(color)
 
