@@ -14,7 +14,6 @@ vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>")
 vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>")
 vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>")
 vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>")
-vim.keymap.set('n', '<leader>r', vim.diagnostic.goto_next)
 
 vim.keymap.set('n', '<leader>l', ":ls<CR>:b<space>")
 vim.keymap.set('n', '<leader>b', "<cmd> :ls<CR>:b<space>#<CR><CR>")

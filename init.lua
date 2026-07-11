@@ -14,4 +14,5 @@ end
 
 require("config.lazy")
 require("something")
+require("config.diagnostics")
 vim.lsp.enable({ "haskell", "js", "go" })

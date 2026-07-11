@@ -13,9 +13,6 @@ local function on_attach(client, bufnr)
   vim.keymap.set('n', '<leader>g', function()
     vim.lsp.buf.format { async = true }
   end, opts)
-  vim.diagnostic.config({
-    virtual_lines = true,
-  })
 end
 
 vim.lsp.config('*', {
