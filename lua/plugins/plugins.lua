@@ -13,24 +13,12 @@ return {
     },
   },
 
-  { "shaunsingh/nord.nvim", name = "nord", priority = 1000 },
   {
-    "neanias/everforest-nvim",
-    version = false,
+    "anAcc22/sakura.nvim",
+    dependencies = { "rktjmp/lush.nvim" },
     lazy = false,
     priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      require("everforest").setup({
-      -- Your config here
-      background = "hard",
-      transparent_background_level = 2,
-      on_highlights = function(hl, palette)
-        hl.Visual = { bg = "#4a3a5a" }
-      end,
-      })
-    end,
   },
-
   {
     'nvim-treesitter/nvim-treesitter',
     branch = 'main',
@@ -49,9 +37,21 @@ return {
   },
 
   {
-    'ms-jpq/chadtree',
-    branch = 'chad',
-    cmd = { 'CHADopen', 'CHADopenCurrent' },
+    'mikavilpas/yazi.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    keys = {
+      {
+        '<leader>v',
+        '<cmd>Yazi cwd<cr>',
+        desc = 'Open yazi in the working directory',
+      },
+      {
+        '<leader>V',
+        '<cmd>Yazi<cr>',
+        desc = 'Open yazi at the current file',
+      },
+    },
+    opts = {},
   },
 
   {
@@ -82,28 +82,30 @@ return {
   {
     "neovim/nvim-lspconfig", -- REQUIRED: for native Neovim LSP integration
     lazy = false, -- REQUIRED: tell lazy.nvim to start this plugin at startup
-    dependencies = {
-      -- main one
-      { "ms-jpq/coq_nvim", branch = "coq" },
-  
-      -- 9000+ Snippets
-      { "ms-jpq/coq.artifacts", branch = "artifacts" },
-  
-      -- lua & third party sources -- See https://github.com/ms-jpq/coq.thirdparty
-      -- Need to **configure separately**
-      { 'ms-jpq/coq.thirdparty', branch = "3p" }
-      -- - shell repl
-      -- - nvim lua api
-      -- - scientific calculator
-      -- - comment banner
-      -- - etc
-    },
-    init = function()
-      vim.g.coq_settings = {}
-    end,
     config = function()
       -- Your LSP settings here
     end,
-  }
+  },
+
+  {
+    'saghen/blink.cmp',
+    version = '1.*', -- use the prebuilt Rust fuzzy-matcher binary
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    event = 'InsertEnter',
+    opts = {
+      keymap = { preset = 'default' },
+      appearance = {
+        nerd_font_variant = 'mono',
+      },
+      completion = {
+        documentation = { auto_show = true },
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
+    },
+    opts_extend = { 'sources.default' },
+  },
 }
 

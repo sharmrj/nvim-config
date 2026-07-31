@@ -1,10 +1,12 @@
 function Color()
-    color = "everforest"
+    color = "sakura"
 
+    vim.opt.background = "dark"
     vim.cmd.colorscheme(color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "Visual", { bg = "#4a3a5a" })
     -- Line Number Colors
     vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#747e7e', bold = false })
     vim.api.nvim_set_hl(0, 'LineNr', { fg = '#CBE4DE', bold = false })

@@ -15,4 +15,10 @@ end
 require("config.lazy")
 require("something")
 require("config.diagnostics")
+
+-- Give every LSP server blink.cmp's capabilities (replaces coq_nvim)
+vim.lsp.config('*', {
+  capabilities = require('blink.cmp').get_lsp_capabilities(),
+})
+
 vim.lsp.enable({ "haskell", "js", "go" })
