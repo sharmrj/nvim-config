@@ -42,13 +42,13 @@ return {
     keys = {
       {
         '<leader>v',
-        '<cmd>Yazi cwd<cr>',
-        desc = 'Open yazi in the working directory',
+        '<cmd>Yazi<cr>',
+        desc = 'Open yazi in the directory of the current file',
       },
       {
         '<leader>V',
-        '<cmd>Yazi<cr>',
-        desc = 'Open yazi at the current file',
+        '<cmd>Yazi cwd<cr>',
+        desc = 'Open yazi in the working directory',
       },
     },
     opts = {},
